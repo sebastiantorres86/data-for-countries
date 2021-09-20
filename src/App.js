@@ -12,7 +12,6 @@ function App () {
   useEffect(() => {
     axios.get('https://restcountries.eu/rest/v2/all').then(response => {
       setCountries(response.data)
-      console.log(response.data)
     })
   }, [])
 
@@ -26,10 +25,14 @@ function App () {
         country.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
       )
 
+  const handleClick = val => {
+    setSearchTerm(val)
+  }
+
   return (
     <div>
       <Filter searchTerm={searchTerm} handleChange={handleChange} />
-      <Countries results={results} />
+      <Countries results={results} handleClick={handleClick} />
     </div>
   )
 }

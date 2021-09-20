@@ -2,7 +2,7 @@ import React from 'react'
 import Country from './Country'
 import CountryInfo from './CountryInfo'
 
-const Countries = ({ results }) => {
+const Countries = ({ results, handleClick }) => {
   const totalCountries = results.length
 
   if (totalCountries >= 10) {
@@ -11,7 +11,7 @@ const Countries = ({ results }) => {
     return (
       <>
         {results.map(item => (
-          <Country key={item.name} country={item} />
+          <Country key={item.name} country={item} handleClick={handleClick} />
         ))}
       </>
     )
